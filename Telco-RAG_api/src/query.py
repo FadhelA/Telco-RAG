@@ -27,7 +27,7 @@ class Query:
         self.wg = []
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = NNRouter()
-        self.model.load_state_dict(torch.load(r'.\\src\\resources\\router_new.pth', map_location='cpu'))
+        self.model.load_state_dict(torch.load('./src/resources/router_new.pth', map_location='cpu'))
         self.model.to(self.device)
         self.model.eval()
         self.original_labels_mapping = np.arange(21, 39)
@@ -67,7 +67,7 @@ class Query:
     
     @staticmethod
     def get_col2(embeddings_list):
-        file_path = r'.\\src\\resources\\series_description.json'
+        file_path = './src/resources/series_description.json'
         if os.path.isfile(file_path):
             with open(file_path, 'r') as file:
                 series_dict = json.load(file)
@@ -208,7 +208,6 @@ class Query:
     Answer options:
     {options}"""
         osintquery = await a_submit_prompt_flex_UI(querytoOSINT, model=model_name)
-        print("_FA"*100)
         print(osintquery)
         try:
             online_info = await fetch_snippets_and_search(query= osintquery.rstrip('"'), question=self.question, model_name=model_name, validator=validator_flag, UI=True)     

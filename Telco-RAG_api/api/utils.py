@@ -3,7 +3,7 @@ import os
 from copy import deepcopy
 
 def update_secrets_file(model, api_key):
-    file_path = r'.\\api\\settings\\.secrets.toml'
+    file_path = './api/settings/.secrets.toml'
 
     if os.path.exists(file_path):
         with open(file_path, 'r') as file:

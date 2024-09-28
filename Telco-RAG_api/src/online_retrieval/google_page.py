@@ -142,7 +142,6 @@ async def _get_snippet(query: str, engine: str, session: httpx.AsyncClient):
             "TE": "trailers",
         }
         html_content = await fetch_search_page(url, session, headers)
-        print("GOOGLE GET "*20) # DELETE
         print(f"HTML content: {html_content[:30]}")
         if html_content:
             return await extract_google_results(html_content, session)
@@ -175,8 +174,6 @@ async def fetch_all_snippets(queries: list, question: str, model_name='gpt-4o-mi
     async with httpx.AsyncClient() as session:
         tasks = [get_snippet(query, engine, session) for query in queries for engine in engines]
         results = await asyncio.gather(*tasks)
-        print("SNIPPETS GOOGLE "*20) # DELETE DEBUG
-        print(f"Results {results}")  
 
         combined_results = {}
         for i, query in enumerate(queries):

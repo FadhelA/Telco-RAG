@@ -28,7 +28,7 @@ async def TelcoRAG(query, model_name='gpt-4o-mini', api_key= None):
             sys.exit("You do not have an OpenAI api key stored.")
     try:
         update_secrets_file(model_name, api_key)
-        start =  time.time()
+        start = time.time()
         question = Query(query, [])
 
         query = question.question

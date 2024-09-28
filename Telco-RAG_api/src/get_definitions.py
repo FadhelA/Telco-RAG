@@ -82,7 +82,7 @@ def find_terms_and_abbreviations_in_sentence(terms_dict, abbreviations_dict, sen
     return formatted_terms, formatted_abbreviations
 
 def get_def(sentence):
-    file_path = r".\\src\\resources\\3GPP_vocabulary.docx"
+    file_path = "./src/resources/3GPP_vocabulary.docx"
     terms_definitions, abbreviations_definitions = read_docx(file_path)
     formatted_terms, formatted_abbreviations = find_terms_and_abbreviations_in_sentence(terms_definitions, abbreviations_definitions, sentence)
     defined = []
@@ -92,7 +92,7 @@ def get_def(sentence):
         defined.append(abbreviation[:3])
 
 def define_TA_question(sentence):
-    file_path = r".\\src\\resources\\3GPP_vocabulary.docx"
+    file_path = "./src/resources/3GPP_vocabulary.docx"
     terms_definitions, abbreviations_definitions = read_docx(file_path)
     formatted_terms, formatted_abbreviations = find_terms_and_abbreviations_in_sentence(terms_definitions, abbreviations_definitions, sentence)
     terms = '\n'.join(formatted_terms)
